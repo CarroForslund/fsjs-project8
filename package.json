@@ -1,0 +1,25 @@
+{
+  "name": "fsjs-project8",
+  "version": "1.0.0",
+  "description": "Using Gulp to Build a Front End Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarroForslund/fsjs-project8.git"
+  },
+  "author": "Caroline Forslund",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CarroForslund/fsjs-project8/issues"
+  },
+  "homepage": "https://github.com/CarroForslund/fsjs-project8#readme",
+  "dependencies": {
+    "npm": "^5.8.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
