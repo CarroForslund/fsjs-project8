@@ -8,7 +8,7 @@ var gulp      = require("gulp"),
     sass      = require("gulp-sass"),
     maps      = require("gulp-sourcemaps"),
     del       = require("del"),
-    image     = require("gulp-image"),
+    image     = require("gulp-imagemin"),
     webserver = require("gulp-webserver");
 
 // Concatinate and map the script files
