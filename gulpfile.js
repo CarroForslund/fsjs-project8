@@ -10,7 +10,8 @@ var gulp        = require("gulp"),
     del         = require("del"),
     image       = require("gulp-imagemin"),
     webserver   = require("gulp-webserver"),
-    runSequence = require('run-sequence');;
+    browserSync = require("browser-sync").create(),
+    runSequence = require('run-sequence');
 
 // Concatinate and map the script files
 gulp.task("concatScripts", function(){
@@ -93,16 +94,13 @@ gulp.task("build", function(){
   runSequence("clean", ["scripts", "styles", "images"]);
 });
 
-gulp.task("webserver", function(){
-  gulp.src('index')
-    .pipe(webserver({
-      localhost: true,
-      livereload: true,
-      directoryListing: true,
-      open: true,
-      port: 3000
-    }));
-})
+gulp.task('webserver', function() {
+  browserSync.init({
+    server: {
+      baseDir: "./"
+    }
+  });
+});
 
 // gulp.task("serve", ["watchSass"]);
 
