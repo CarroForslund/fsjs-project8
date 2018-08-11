@@ -1,15 +1,16 @@
 "use strict";
 
-var gulp      = require("gulp"),
-    concat    = require("gulp-concat"),
-    uglify    = require("gulp-uglify"),
-    uglifycss = require("gulp-uglifycss"),
-    rename    = require("gulp-rename"),
-    sass      = require("gulp-sass"),
-    maps      = require("gulp-sourcemaps"),
-    del       = require("del"),
-    image     = require("gulp-imagemin"),
-    webserver = require("gulp-webserver");
+var gulp        = require("gulp"),
+    concat      = require("gulp-concat"),
+    uglify      = require("gulp-uglify"),
+    uglifycss   = require("gulp-uglifycss"),
+    rename      = require("gulp-rename"),
+    sass        = require("gulp-sass"),
+    maps        = require("gulp-sourcemaps"),
+    del         = require("del"),
+    image       = require("gulp-imagemin"),
+    webserver   = require("gulp-webserver"),
+    runSequence = require('run-sequence');;
 
 // Concatinate and map the script files
 gulp.task("concatScripts", function(){
@@ -88,10 +89,8 @@ gulp.task("clean", function(){
 
 // Run the clean, scripts, styles, and images tasks,
 // The clean task completes before the other commands
-gulp.task("build", ["clean"], function(){
-  gulp.start("scripts");
-  gulp.start("styles");
-  gulp.start("images");
+gulp.task("build", function(){
+  runSequence("clean", ["scripts", "styles", "images"]);
 });
 
 gulp.task("webserver", function(){
@@ -108,6 +107,6 @@ gulp.task("webserver", function(){
 // gulp.task("serve", ["watchSass"]);
 
 // DEFAULT SCRIPT RUNS ON THE "GULP" COMMAND IN THE CONSOLE
-gulp.task("default", ["build"], function(){
-  gulp.start("webserver");
+gulp.task("default", function(){
+  runSequence("build", "webserver");
 });
